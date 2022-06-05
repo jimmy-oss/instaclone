@@ -678,7 +678,7 @@ video {
 
 .bg-gray-100{
   --tw-bg-opacity: 1;
-  background-color: rgba(243, 244, 246, var(--tw-bg-opacity));
+  background-color: linear-gradient(to right, #3a1c71, #d76d77, #ffaf7b, var(--tw-bg-opacity));
 }
 
 .bg-gray-200{
