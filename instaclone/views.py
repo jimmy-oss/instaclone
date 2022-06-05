@@ -21,6 +21,8 @@ def signup(request):
             elif User.objects.filter(username=username).exists():
                 messages.info(request, 'Username Taken')
                 return redirect('signup')
+         # Log user in and redirects to settings page
+         # Create a profile object for the new user
             else:
                 user = User.objects.create_user(username=username, email=email, password=password)
                 user.save()
