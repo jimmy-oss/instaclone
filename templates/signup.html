@@ -51,18 +51,14 @@
                 <img class="signup-img"  src="/static/images/signup.svg" width="300" height="280">
                 <h1 class="lg:text-3xl text-xl font-semibold mb-6" style="color:#FFF ;">  𝒮𝒾𝑔𝓃 𝓊𝓅</h1>
                 <div>
-                    <style>
-                        h5{
-                            color: red;
-                        }
-                    </style>
-                    {% for messages in messages %}
-                    <h5>{{message}}</h5>
-                        {% endfor %}
+                
+                    {% for message in messages %}
+                    <h5 style="color: black;">{{message}}</h5>
+                    {% endfor %}
                 </div>
             
                 <!--<p class="mb-2 text-black text-lg"> Register to manage your account </p>-->
-                <form action="" method="POST" enctype="multipart/form-data">
+                <form action="" method="POST" >
                     {% csrf_token %}
                     <!--<div class="flex lg:flex-row flex-col lg:space-x-2">
                         <input type="text" placeholder="First Name"  class="bg-gray-200 mb-2 shadow-none  dark:bg-gray-800" style="border: 1px solid #d3d5d8 !important;">
