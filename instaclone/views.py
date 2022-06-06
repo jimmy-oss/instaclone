@@ -1,10 +1,12 @@
+from email import message
 from django.shortcuts import render,redirect
 from django.contrib.auth.models import User,auth
 from django.contrib import messages
-from django.http import HttpResponse, Http404,HttpResponseRedirect
+from django.http import HttpResponse, Http404
 from django.contrib.auth.decorators import login_required
 from .models import Profile
-from .email import send_welcome_email
+from django.core.mail import send_mail
+from django.conf import settings
 
 
 # Create your views here.
@@ -29,6 +31,11 @@ def signup(request):
             else:
                 user = User.objects.create_user(username=username, email=email, password=password)
                 user.save()
+                subject = ' ✴  🎀  𝒜𝒹𝓋𝑒𝓃𝑔𝒾𝓈𝓈  🎀  ✴  𝓝𝓮𝔀𝓼𝓛𝓮𝓽𝓽𝓮𝓻 '
+                message = f'𝓗𝓮𝓵𝓵𝓸 {username} 𝓦𝓮𝓵𝓬𝓸𝓶𝓮 𝓽𝓸 𝓽𝓱𝓮 𝒜𝒹𝓋𝑒𝓃𝑔𝒾𝓈𝓈  𝓝𝓮𝔀𝓼𝓛𝓮𝓽𝓽𝓮𝓻  𝒴❀𝓊 𝓌𝒾𝓁𝓁 𝒻𝒾𝓃𝒹 𝓉𝒽𝑒 𝓂🌸𝓈𝓉 𝑒𝓍𝒸𝒾𝓉𝒾𝓃𝑔 𝓃𝑒𝓌𝓈 𝒶𝒷❤𝓊𝓉 𝒶𝒹𝓋𝑒𝓃𝑔𝒾𝓈𝓈 '
+                from_email = 'noreply@gmail.com'
+                recipient_list = [email]
+                send_mail(subject, message, from_email,recipient_list,)
 
                 #log user in and redirect to settings page
                 user_login = auth.authenticate(username=username, password=password)
