@@ -15,3 +15,10 @@ class Profile(models.Model):
 
     def __str__(self):
         return self.user.username
+class Post(models.Model):
+         id = models.UUIDField(primary_key=True)
+         user =
+         image =
+         caption =
+         created_at =
+         no_of_likes =
