@@ -25,6 +25,24 @@ class Post(models.Model):
          created_at = models.DateTimeField(default=datetime.now)
          no_of_likes = models.IntegerField(default=0)
          
+class Meta:
+        '''
+        Class method to display images by date published
+        '''
+        ordering = ["-pk"]
+
+def save_post(self):
+        '''
+        Method to save our images
+        '''
+        self.save()
+
+def delete_post(self):
+        '''
+        Method to delete our images
+        '''
+        self.delete()
+         
 def __str__(self):
          return self.user
 class LikePost(models.Model):
