@@ -272,8 +272,8 @@
                                             <p>Liked by {{post.no_of_likes}} people</p>
                                             {% endif %}
                                         </div>
-                                        
                                     </a>
+                                   
                                     <!---
                                     <a href="#" class="flex items-center space-x-2">
                                         <div class="p-2 rounded-full text-black">
@@ -329,15 +329,48 @@
                                     </div>
                                 </div>
                             -->
-                            <!--
-                                <div class="bg-gray-100 bg-gray-100 rounded-full rounded-md relative ">
-                                    <input type="text" placeholder="post a comment" class="bg-transparent max-h-10 shadow-none">
-                                    <div class="absolute bottom-0 flex h-full items-center right-0 right-3 text-xl space-x-2">
-                                        <a href="#"> <i class="uil-image"></i></a>
-                                        <a href="#"> <i class="uil-video"></i></a>
-                                    </div>
-                                </div>
-                            -->
+                            
+                             
+
+                               <!---
+                            {% if post.comments.all %}
+                            {% if post.comments.count > 3 %}
+                            <p id="viewComments" data-bs-toggle="modal" data-bs-target="#imageModal" data-url="{{ post.image.url }}"
+                                data-username="{{ post.user.user.username }}"
+                                data-profilepic="{{post.user.profile_pic.url}}" data-caption="{{ post.description }}"
+                                class="text-muted">View
+                                    all {{ post.comments.count }}
+                                    comment{{ post.comments.count | pluralize}}</p>
+                            {% endif %}
+                            {% else %}
+                            <p class="text-muted">No comments</p>
+                            {% endif %}
+                             Comments Loop 
+                            {% for comment in post.comments.all|slice:"3" %}
+                            <p><strong>{{ comment.user.user.username }}</strong> {{ comment.comment|truncatechars:20 }}
+                            </p>
+                            {% endfor %}
+                     
+                            <p class="text-muted text-uppercase time">{{ post.created_at | timesince}} ago.</p>
+                        </div>
+                    </div>
+
+                    <div
+                        class="comment-input d-none d-md-flex align-items-center justify-content-between mx-2 p-2 border-top mb-2">
+                        <div class="emoji"><i class='bx bx-smile'></i></div>
+
+
+                        <div class="comment">
+                            <form action="{% url 'comment' post_id=post.id %}" method="POST">
+                                {% csrf_token %}
+                                <input class="py-2 small" type="text" name="comment" id="comment"
+                                    placeholder="Add a comment..." required>
+                                <button type="submit">Post</button>
+                            </form>
+                            
+                            --->
+
+                             
                             </div>
     
                         </div>

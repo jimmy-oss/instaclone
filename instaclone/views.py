@@ -1,13 +1,17 @@
 from email import message
-from django.shortcuts import render,redirect
+from django.http.response import Http404
+from django.shortcuts import render,redirect,get_object_or_404
+from .forms import CommentForm
 from django.contrib.auth.models import User,auth
 from django.contrib import messages
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from .models import Profile, Post, LikePost, FollowersCount
 from django.core.mail import send_mail
+from .forms import  CommentForm
 from itertools import chain
 import random
+ 
  
 
 
@@ -117,6 +121,9 @@ def like_post(request):
         post.no_of_likes = post.no_of_likes-1
         post.save()
         return redirect('/')
+
+ 
+
 @login_required(login_url='signin')
 def profile(request, pk):
     user_object = User.objects.get(username=pk)
@@ -134,6 +141,7 @@ def profile(request, pk):
 
     user_followers = len(FollowersCount.objects.filter(user=pk))
     user_following = len(FollowersCount.objects.filter(follower=pk))
+    
 
     context = {
         'user_object': user_object,
@@ -143,6 +151,7 @@ def profile(request, pk):
         'button_text': button_text,
         'user_followers': user_followers,
         'user_following': user_following,
+        
     }
     return render(request, 'profile.html', context)
 
@@ -254,4 +263,15 @@ def logout(request):
     auth.logout(request)
     return redirect('signin')
 
- 
+def comment(request, post_id):
+    post = Post.objects.get(id=post_id)
+
+    if request.method == 'POST':
+        comment_form = CommentForm(request.POST, request.FILES)
+        if comment_form.is_valid():
+            comment_form.instance.user = request.user.profile
+            comment_form.instance.post = post
+
+            comment_form.save()
+
+            return HttpResponseRedirect(request.META.get('HTTP_REFERER'))

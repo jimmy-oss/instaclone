@@ -1,15 +1,15 @@
-from distutils.command.upload import upload
-from email.policy import default
+from unicodedata import name
 from django.db import models
 from django.contrib.auth import get_user_model
 import uuid
 from datetime import datetime
+from ckeditor.fields import RichTextField
 
 User = get_user_model()
 
 # Create your models here.
 class Profile(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE,related_name='profile')
     id_user = models.IntegerField()
     bio = models.TextField(blank=True)
     profileimg = models.ImageField(upload_to='profile_images', default='blank-profile-picture.png')
@@ -40,3 +40,13 @@ class FollowersCount(models.Model):
 
     def __str__(self):
         return self.user
+class Comment(models.Model):
+    comment = models.TextField()
+    post=models.ForeignKey(Post,related_name='comments',on_delete=models.CASCADE)
+    user=models.ForeignKey(Profile,related_name='comments',on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True, null=True)
+    def __str__(self):
+        return self.comment
+    class Meta:
+        ordering=["-pk"]
+ 
