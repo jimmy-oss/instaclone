@@ -52,6 +52,34 @@ def like_post(request):
         post.no_of_likes = post.no_of_likes-1
         post.save()
         return redirect('/')
+@login_required(login_url='signin')
+def profile(request, pk):
+    user_object = User.objects.get(username=pk)
+    user_profile = Profile.objects.get(user=user_object)
+    user_posts = Post.objects.filter(user=pk)
+    user_post_length = len(user_posts)
+
+    #follower = request.user.username
+   # user = pk
+
+    #if FollowersCount.objects.filter(follower=follower, user=user).first():
+       # button_text = 'Unfollow'
+    #else:
+      #  button_text = 'Follow'
+
+   # user_followers = len(FollowersCount.objects.filter(user=pk))
+    #user_following = len(FollowersCount.objects.filter(follower=pk))
+
+    context = {
+        'user_object': user_object,
+        'user_profile': user_profile,
+        'user_posts': user_posts,
+        'user_post_length': user_post_length,
+      #  'button_text': button_text,
+      #  'user_followers': user_followers,
+      #  'user_following': user_following,
+    }
+    return render(request, 'profile.html', context)
    
 def signup(request):
 
@@ -71,11 +99,7 @@ def signup(request):
             else:
                 user = User.objects.create_user(username=username, email=email, password=password)
                 user.save()
-                subject = ' ✴  🎀  𝒜𝒹𝓋𝑒𝓃𝑔𝒾𝓈𝓈  🎀  ✴  𝓝𝓮𝔀𝓼𝓛𝓮𝓽𝓽𝓮𝓻 '
-                message = f'𝓗𝓮𝓵𝓵𝓸 {username} 𝓦𝓮𝓵𝓬𝓸𝓶𝓮 𝓽𝓸 𝓽𝓱𝓮 𝒜𝒹𝓋𝑒𝓃𝑔𝒾𝓈𝓈  𝓝𝓮𝔀𝓼𝓛𝓮𝓽𝓽𝓮𝓻  𝒴❀𝓊 𝓌𝒾𝓁𝓁 𝒻𝒾𝓃𝒹 𝓉𝒽𝑒 𝓂🌸𝓈𝓉 𝑒𝓍𝒸𝒾𝓉𝒾𝓃𝑔 𝓃𝑒𝓌𝓈 𝒶𝒷❤𝓊𝓉 𝒶𝒹𝓋𝑒𝓃𝑔𝒾𝓈𝓈 '
-                from_email = 'noreply@gmail.com'
-                recipient_list = [email]
-                send_mail(subject, message, from_email,recipient_list,)
+               
 
                 #log user in and redirect to settings page
                 user_login = auth.authenticate(username=username, password=password)
