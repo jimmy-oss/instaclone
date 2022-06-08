@@ -72,6 +72,7 @@ I have used:
 # Improvement plans 💞️
 
 > Users are able to comment posts from their fellow, delete posts and update.
+> Users receives a welcome message after signing up.
 
 # AUTHORS NAME🦁
 

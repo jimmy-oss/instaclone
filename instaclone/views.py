@@ -276,4 +276,4 @@ def comment(request, post_id):
 
             comment_form.save()
 
-            return HttpResponseRedirect(request.META.get('HTTP_REFERER',{'user_profile': user_profile, }))
+            return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
