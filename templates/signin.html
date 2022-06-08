@@ -2,9 +2,6 @@
 
 <!DOCTYPE html>
 <html lang="en">
-
-
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -58,15 +55,6 @@
                     {% csrf_token %}
                     <input type="text" name="username" placeholder="Username" class="bg-gray-200 mb-2 shadow-none dark:bg-gray-800" style="border: 1px solid #d3d5d8 !important; width:300px">
                     <input type="password" name="password"placeholder="Password" class="bg-gray-200 mb-2 shadow-none dark:bg-gray-800" style="border: 1px solid #d3d5d8 !important; width:300px">
-                    <!---
-                    <div class="flex justify-between my-4">
-                        <div class="checkbox">
-                            <input type="checkbox" id="chekcbox1" checked>
-                            <label for="chekcbox1" style="color:#FFF ;"><span class="checkbox-icon" ></span >Remember Me</label>
-                        </div>
-                        <a href="#" style="color:#FFF ; margin-right:10.8rem;margin-top:0.2rem;"> Forgot Your Password? </a>
-                    </div>
-                -->
                     <button type="submit" class="bg-gradient-to-br from-pink-500 py-3 rounded-md text-white text-xl to-red-400 w-full" style="width:300px">Login</button>
                     <div class="text-center mt-5 space-x-2">
                         <p class="text-base" style="color:#FFF ; margin-right:10.4rem;"> Not registered? <a href="/signup" class=""> Create an account </a></p>
@@ -88,46 +76,7 @@
                 <p class="capitalize" style="color: #ffff;font-size: 16px;">  © copyright 2022 by 𝒜𝒹𝓋𝑒𝓃𝑔𝒾𝓈𝓈</p>
             </div>
         </div>
-
     </div>
-
-
-    <!--<script>
-        
-        (function (window, document, undefined) {
-            'use strict';
-            if (!('localStorage' in window)) return;
-            var nightMode = localStorage.getItem('gmtNightMode');
-            if (nightMode) {
-                document.documentElement.className += ' dark';
-            }
-        })(window, document);
-    
-    
-        (function (window, document, undefined) {
-    
-            'use strict';
-    
-            // Feature test
-            if (!('localStorage' in window)) return;
-    
-            // Get our newly insert toggle
-            var nightMode = document.querySelector('#night-mode');
-            if (!nightMode) return;
-    
-            // When clicked, toggle night mode on or off
-            nightMode.addEventListener('click', function (event) {
-                event.preventDefault();
-                document.documentElement.classList.toggle('dark');
-                if (document.documentElement.classList.contains('dark')) {
-                    localStorage.setItem('gmtNightMode', true);
-                    return;
-                }
-                localStorage.removeItem('gmtNightMode');
-            }, false);
-    
-        })(window, document);
-    </script>-->
 
     <!-- Scripts
     ================================================== -->
@@ -136,9 +85,5 @@
     <script src="{% static 'assets/js/uikit.js' %}"></script>
     <script src="{% static 'assets/js/simplebar.js' %}"></script>
     <script src="{% static 'assets/js/custom.js' %}"></script>
-
-
-</body>
-
-
+   </body>
 </html>
