@@ -71,8 +71,9 @@ I have used:
 
 # Improvement plans 💞️
 
-> Users are able to comment posts from their fellow, delete posts and update.
-> Users receives a welcome message after signing up.
+> <li> Users are able to comment posts from their fellow, delete posts and update.</li>
+
+> <li>Users receives a welcome message after signing up.</li>
 
 # AUTHORS NAME🦁
 
