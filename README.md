@@ -71,8 +71,7 @@ I have used:
 
 # Improvement plans 💞️
 
-> Users are able to comment posts from their fellow peers
-> User are able to delete posts and update
+> Users are able to comment posts from their fellow, delete posts and update.
 
 # AUTHORS NAME🦁
 
