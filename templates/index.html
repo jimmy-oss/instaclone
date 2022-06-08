@@ -332,7 +332,7 @@
                             
                              
 
-                               <!---
+                          <!-----
                             {% if post.comments.all %}
                             {% if post.comments.count > 3 %}
                             <p id="viewComments" data-bs-toggle="modal" data-bs-target="#imageModal" data-url="{{ post.image.url }}"
@@ -345,7 +345,7 @@
                             {% else %}
                             <p class="text-muted">No comments</p>
                             {% endif %}
-                             Comments Loop 
+     
                             {% for comment in post.comments.all|slice:"3" %}
                             <p><strong>{{ comment.user.user.username }}</strong> {{ comment.comment|truncatechars:20 }}
                             </p>
@@ -368,7 +368,7 @@
                                 <button type="submit">Post</button>
                             </form>
                             
-                            --->
+                             --->
 
                              
                             </div>
