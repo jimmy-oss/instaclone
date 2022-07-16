@@ -13,6 +13,9 @@ import os
 import django_heroku
 import dj_database_url
 from decouple import config,Csv
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
  
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -77,6 +80,12 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'social_book.wsgi.application'
  
+  #adding config
+cloudinary.config( 
+  cloud_name = "dc6ecphjr", 
+  api_key = "435424479942614", 
+  api_secret = "Khp8NaCbHKQs4_GKBLdMv1YnJrc" 
+)
 
 
 # Database

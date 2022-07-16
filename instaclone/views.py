@@ -265,15 +265,10 @@ def logout(request):
 
 def comment(request, post_id):
     post = Post.objects.get(id=post_id)
-    user_profile = Profile.objects.get(user=profile)
- 
-    
     if request.method == 'POST':
         comment_form = CommentForm(request.POST, request.FILES)
         if comment_form.is_valid():
             comment_form.instance.user = request.user.profile
             comment_form.instance.post = post
-
             comment_form.save()
-
             return HttpResponseRedirect(request.META.get('HTTP_REFERER'))

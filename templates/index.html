@@ -9,7 +9,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="/static/images/advengiss.svg" rel="icon" type="image/png" >
+    <link href="/static/images/logo.svg" rel="icon" type="image/png" >
     <title>𝐻𝑜𝓂𝑒 - 𝒜𝒹𝓋𝑒𝓃𝑔𝒾𝓈𝓈 </title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -179,7 +179,7 @@
                              <p>
                                  <a href="/profile/{{post.user}}"><strong>{{post.user}}</strong> </a> {{post.caption}}
                              </p>
-                          <!-----
+                    
                             {% if post.comments.all %}
                             {% if post.comments.count > 3 %}
                             <p id="viewComments" data-bs-toggle="modal" data-bs-target="#imageModal" data-url="{{ post.image.url }}"
@@ -205,7 +205,7 @@
                     <div
                         class="comment-input d-none d-md-flex align-items-center justify-content-between mx-2 p-2 border-top mb-2">
                         <div class="emoji"><i class='bx bx-smile'></i></div>
-
+                    <!--- 
                         <div class="comment">
                             <form action="{% url 'comment' post_id=post.id %}" method="POST">
                                 {% csrf_token %}
@@ -213,10 +213,8 @@
                                     placeholder="Add a comment..." required>
                                 <button type="submit">Post</button>
                             </form>
-                            
-                             --->
-                             
                             </div>
+                            --->
                         </div>
                         {%  endfor %}
                     </div>
