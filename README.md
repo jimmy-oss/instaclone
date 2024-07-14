@@ -40,13 +40,13 @@ To use the application you should have python3 and django latest version install
 Create an `.env` and add the following.
 
 ```
+MODE='dev'
 SECRET_KEY='<Secret_key>'
-DBNAME='<DbName>'
-USER='<Username>'
-PASSWORD='<password>'
+DB_NAME='<DB_Name>'
+DB_USER='<Username>'
+DB_PASSWORD='<password>'
 DEBUG=True
 DB_HOST='127.0.0.1'
-MODE='dev'
 ALLOWED_HOSTS='.localhost','.herokuapp.com','127.0.0.1'
 DISABLE_COLLECTSTATIC=1
 
